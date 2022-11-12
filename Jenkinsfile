@@ -29,7 +29,7 @@ pipeline {
             }
         }
        
-                stage('Nexus') {
+        stage('Nexus') {      
             steps {
                 sh 'mvn deploy'
             }
@@ -81,7 +81,7 @@ pipeline {
         
         stage("Send Email"){
            steps{
-               emailext attachLog: true, body: "${env.BUILD_URL} has result ${currentBuild.result}", compressLog: true, subject: "Status of pipeline: ${currentBuild.fullDisplayName}", to: 'khmthe@gmail.com'
+               emailext body: 'A Test EMail', recipientProviders: [[$class: 'DevelopersRecipientProvider'], [$class: 'RequesterRecipientProvider']], subject: 'Test'
            }
        }
         
