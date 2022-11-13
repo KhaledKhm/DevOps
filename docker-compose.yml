@@ -1,6 +1,6 @@
 version: "3"
 services:
-  spring-achat:
+  spring-tpAchatProject:
     image: khaledkhm/achatback
     ports:
       - "8089:8089"
