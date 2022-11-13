@@ -1,4 +1,4 @@
-    version: "3"
+version: "3"
 
 services:
   mysqldb:
@@ -15,7 +15,7 @@ services:
     volumes:
       - /var/lib/mysql
 
-  spring_app:
+  spring-tpachatproject:
     image: khaledkhm/achatback
     container_name: achatback
     restart: on-failure
