@@ -12,12 +12,13 @@ services:
 
 
   tpachatproject:
-    image: khaledkhm/tpachatproject
-    container_name: achatback
-    restart: unless-stopped
-    environment:
-      - spring.datasource.url=jdbc:mysql://mysqldb:3306/tpachat?createDatabaseIfNotExist=true&useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC
-    ports:
-      - 8089:8089
     depends_on:
-      - mysqldatabase
+    - mysqldatabase
+    image: khaledkhm/tpachatproject
+    ports:
+    - "8089:8089"
+    restart: always
+    container_name: achatback
+    environment:
+    - SPRING_DATASOURCE_URL= spring.datasource.url=jdbc:mysql://mysqldb:3306/tpachat?createDatabaseIfNotExist=true&useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC
+ 
