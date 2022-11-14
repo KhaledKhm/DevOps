@@ -28,6 +28,3 @@ services:
         ports:
           - $SPRING_LOCAL_PORT:$SPRING_DOCKER_PORT
         restart: on-failure
-
-    volumes:
-      db:
