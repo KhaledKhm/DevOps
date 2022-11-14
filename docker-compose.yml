@@ -1,7 +1,7 @@
 version: "3"
 services:
   spring-achat:
-    image: khaledkhm/tpachatproject-1.0:latest
+    image: khaledkhm/achatback
     ports:
       - "8089:8089"
     networks:
@@ -16,7 +16,7 @@ services:
   mysqldb:
     image: mysql:8
     volumes:
-      -  /home/mysql/mariemdata:/var/lib/mysql:rw
+      -  /home/mysql/khaledkhmdata:/var/lib/mysql:rw
     networks:
       - net-mysql
     environment:
