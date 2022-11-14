@@ -12,7 +12,7 @@ mysqldb:
 
 springboot-be:
     depends_on:
-      - mysql-db
+      - mysqldb
     image: khaledkhm/tpachatproject:latest
     container_name: springboot-be
     env_file: ./.env
