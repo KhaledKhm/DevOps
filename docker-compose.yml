@@ -1,7 +1,7 @@
 version: "3"
 services:
-  spring-tpAchatProject:
-    image: khaledkhm/achatback
+  spring-tpachatproject:
+    image: khaledkhm/tpachatproject
     ports:
       - "8089:8089"
     networks:
