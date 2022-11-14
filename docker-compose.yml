@@ -12,7 +12,7 @@ services:
 
 
   tpachatproject:
-    image: khaledkhm/tpachatproject-1.0:latest
+    image: khaledkhm/tpachatproject
     container_name: tpachatproject
     restart: on-failure
     environment:
