@@ -11,7 +11,7 @@ services:
 
 
 
-  app_achat_back:
+  tpachatproject:
     image : khaledkhm/tpachatproject-1.0:latest
     depends_on:
       - mysqldatabase
