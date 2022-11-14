@@ -1,21 +1,25 @@
 version: "3"
 
 services:
-    mysqldb:
-        image: mysql:latest
-        volumes:
-          -  /home/mysql/khaledkhmdata:/var/lib/mysql:rw
-        networks:
-          - net-mysql
-        environment:
-          - MYSQL_ROOT_PASSWORD=root
-          - MYSQL_DATABASE=tpachat
+     mysqldb:
+    container_name: mysqldb
+    image: mysql/mysql-server:8.0
+    restart: unless-stopped
+    ports:
+      - 3306:3306
+    environment:
+      - MYSQL_ROOT_PASSWORD=1234
+      - MYSQL_DATABASE=tpachat
+      - MYSQL_USER=root
+      - MYSQL_PASSWORD=1234
+    volumes:
+      - /var/lib/mysql
 
     springboot-be:
         depends_on:
           - mysqldb
         image: khaledkhm/tpachatproject:latest
-        container_name: springboot-be
+        container_name: achatback
         env_file: ./.env
         environment:
           SPRING_APPLICATION_JSON: '{
