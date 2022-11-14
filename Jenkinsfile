@@ -53,7 +53,7 @@ pipeline {
         
          stage ('Docker build') {
              steps {
-            sh 'docker build -t khaledkhm/tpachatproject:latest .'
+            sh 'docker build -t khaledkhm/achatback:latest .'
             }
         }
    
