@@ -18,7 +18,7 @@ pipeline {
         stage('Cleaning the project') {     
             steps {
                 echo 'cleaning project ...'
-                sh 'mvn clean'
+                sh 'mvn clean package'
             }
         }
         
@@ -53,13 +53,13 @@ pipeline {
         
          stage ('Docker build') {
              steps {
-            sh 'docker build -t $DOCKERHUB_CREDENTIALS_USR/tpachatproject:latest .'
+            sh ' docker build -t $DOCKERHUB_CREDENTIALS_USR/tpachatproject-1.0:latest .'
             }
         }
    
          stage ('Docker login'){
         	steps {
-        	sh 'docker login -u khaledkhm -p fslhggI199725'
+        	sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR -p $DOCKERHUB_CREDENTIALS_PSW'
         	}
         }
         
@@ -69,7 +69,7 @@ pipeline {
         
         stage ('Docker push'){
         	steps {
-        	sh 'docker push khaledkhm/tpachatproject:latest'
+        	sh 'docker push $DOCKERHUB_CREDENTIALS_USR/tpachatproject-1.0:latest'
         	}
         }
         
