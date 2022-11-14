@@ -1,27 +1,32 @@
 version: "3"
 
-services:
-  mysqldb:
-    container_name: mysqldb
+mysqldb:
     image: mysql:latest
-    restart: unless-stopped
-    ports:
-      - 3306:3306
+    volumes:
+      -  /home/mysql/khaledkhmdata:/var/lib/mysql:rw
+    networks:
+      - net-mysql
     environment:
       - MYSQL_ROOT_PASSWORD=root
       - MYSQL_DATABASE=tpachat
-      - MYSQL_USER=root
-      - MYSQL_PASSWORD=root
-    volumes:
-      - /var/lib/mysql
 
-  spring_app:
-    image: khaledkhm/tpachatproject:latest
-    container_name: achatback
-    restart: on-failure
-    environment:
-      - spring.datasource.url=jdbc:mysql://mysqldb:3306/tpachat?createDatabaseIfNotExist=true&useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC
-    ports:
-      - 8089:8089
+springboot-be:
     depends_on:
-      - mysqldb
+      - mysql-db
+    image: khaledkhm/tpachatproject:latest
+    container_name: springboot-be
+    env_file: ./.env
+    environment:
+      SPRING_APPLICATION_JSON: '{
+        "spring.datasource.url"  : "jdbc:mysql://mysql-db:$MYSQLDB_DOCKER_PORT/$MYSQLDB_DATABASE?useSSL=false",
+        "spring.datasource.username" : "$MYSQLDB_USER",
+        "spring.datasource.password" : "$MYSQLDB_ROOT_PASSWORD",
+        "spring.jpa.properties.hibernate.dialect" : "org.hibernate.dialect.MySQL5InnoDBDialect",
+        "spring.jpa.hibernate.ddl-auto" : "update"
+      }'
+    ports:
+      - $SPRING_LOCAL_PORT:$SPRING_DOCKER_PORT
+    restart: on-failure
+
+volumes:
+  db:
