@@ -16,7 +16,7 @@ services:
       - /var/lib/mysql
 
   spring_app:
-    image: khaledkhm/tpachatproject
+    image: khaledkhm/achatback
     container_name: achatback
     restart: on-failure
     environment:
