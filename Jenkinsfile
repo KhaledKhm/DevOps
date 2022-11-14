@@ -53,7 +53,7 @@ pipeline {
         
          stage ('Docker build') {
              steps {
-            sh 'docker build -t khaledkhm/achatback:latest .'
+            sh 'docker build -t khaledkhm/tpachatproject:latest .'
             }
         }
    
@@ -69,7 +69,7 @@ pipeline {
         
         stage ('Docker push'){
         	steps {
-        	sh 'docker push khaledkhm/achatback:latest'
+        	sh 'docker push khaledkhm/tpachatproject:latest'
         	}
         }
         
