@@ -81,7 +81,7 @@ pipeline {
         
         stage("Send Email"){
            steps{
-             emailtext 	attachLog: true,
+             emailext 	attachLog: true,
              		bcc: '', body: '''Hello from Jenkins,
 		            Devops Pipeline returned success 
 		            ${env.BUILD_URL} has result ${currentBuild.result}
