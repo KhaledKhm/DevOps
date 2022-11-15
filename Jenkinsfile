@@ -64,7 +64,6 @@ pipeline {
         }
         
    
-        
        
         
         stage ('Docker push'){
@@ -81,8 +80,8 @@ pipeline {
         
         stage("Send Email"){
            steps{
-             mail bcc: '', body: '''Hello from Jenkins,
-		            Devops Pipeline returned success.
+             mail bcc: '', body: '''Hello from Khaled/Jenkins,
+		            Pipeline successfully launched.
 		            Best Regards''', cc: '', from: 'khaled.maammar@esprit.tn', replyTo: '', subject: 'Devops Pipeline', to: 'khmthe@gmail.com'
            }
        }
