@@ -83,7 +83,7 @@ pipeline {
            steps{
              emailtext bcc: '', body: '''Hello from Jenkins,
 		            Devops Pipeline returned success.
-		            Best Regards''', cc: '', from: 'khaled.maammar@esprit.tn', replyTo: '', subject: 'Devops Pipeline', to: 'khmth@gmail.com'
+		            Best Regards''', cc: '', from: 'khaled.maammar@esprit.tn', replyTo: '', subject: 'Devops Pipeline', to: 'khmthe@gmail.com'
            }
        }
         
