@@ -1,4 +1,4 @@
-version : ''
+version : '3.8'
 services:
   mysqldatabase:
     image: mysql:latest
@@ -12,7 +12,7 @@ services:
 
 
   app_achat_back:
-    image : khaledkhm/tpachatproject-1.0:latest
+    image : khaledkhm/tpAchatProject-1.0:latest
     depends_on:
       - mysqldatabase
     restart: on-failure
