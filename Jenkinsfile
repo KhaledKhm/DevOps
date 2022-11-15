@@ -81,9 +81,13 @@ pipeline {
         
         stage("Send Email"){
            steps{
-             mail bcc: '', body: '''Hello from Jenkins,
-		            Devops Pipeline returned success.
-		            Best Regards''', cc: '', from: 'khaled.maammar@esprit.tn', replyTo: '', subject: 'Devops Pipeline', to: 'khmthe@gmail.com'
+             mail 	attachLog: true,
+             		bcc: '', body: '''Hello from Jenkins,
+		            Devops Pipeline returned success 
+		            ${env.BUILD_URL} has result ${currentBuild.result}
+		            Best Regards''',
+		            compressLog: true,
+		             cc: '', from: 'khaled.maammar@esprit.tn', replyTo: '', subject: 'Status of pipeline: ${currentBuild.fullDisplayName}', to: 'khmthe@gmail.com'
            }
        }
         
