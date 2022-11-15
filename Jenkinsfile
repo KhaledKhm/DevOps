@@ -81,8 +81,12 @@ pipeline {
         
         stage("Send Email"){
            steps{
-          	 emailext attachLog: true, body: "${env.BUILD_URL} has result ${currentBuild.result}", compressLog: true, subject: "Status of pipeline: ${currentBuild.fullDisplayName}", to: 'khmthe@gmail.com'
-               emailext body: 'A Test EMail', recipientProviders: [[$class: 'DevelopersRecipientProvider'], [$class: 'RequesterRecipientProvider']], subject: 'Test'
+             mail bcc: '', body: '''Hello from Jenkins,
+		            Devops Pipeline returned success.
+		            Best Regards''', cc: '', from: 'khaled.maammar@esprit.tn', replyTo: '', subject: 'Devops Pipeline', to: 'khmth@gmail.com'
+          	// emailext attachLog: true, body: "${env.BUILD_URL} has result ${currentBuild.result}", compressLog: true, subject: "Status of pipeline: ${currentBuild.fullDisplayName}", to: 'khmthe@gmail.com'
+            //   emailext body: 'A Test EMail', recipientProviders: [[$class: 'DevelopersRecipientProvider'], [$class: 'RequesterRecipientProvider']], subject: 'Test'
+           
            }
        }
         
