@@ -53,7 +53,7 @@ pipeline {
         
          stage ('Docker build') {
              steps {
-            sh ' docker build -t $DOCKERHUB_CREDENTIALS_USR/tpachatproject-1.0:latest .'
+            sh ' docker build -t $DOCKERHUB_CREDENTIALS_USR/tpachatproject:latest .'
             }
         }
    
@@ -69,7 +69,7 @@ pipeline {
         
         stage ('Docker push'){
         	steps {
-        	sh 'docker push $DOCKERHUB_CREDENTIALS_USR/tpachatproject-1.0:latest'
+        	sh 'docker push $DOCKERHUB_CREDENTIALS_USR/tpachatproject:latest'
         	}
         }
         
